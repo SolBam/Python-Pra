@@ -1,0 +1,24 @@
+import tkinter.ttk as ttk
+from tkinter import *
+
+root = Tk()
+root.title("Nado GUI")
+root.geometry("640x480")
+
+values = [str(i) + "일" for i in range(1, 32)] # 1 ~ 31까지의 숫자
+combobox = ttk.Combobox(root, height=5, value=values)
+combobox.pack()
+combobox.set("카드 결제일") # 최초 목록 제목 설정
+
+readonly_combobox = ttk.Combobox(root, height=10, value=values, state="readonly") # 값을 입력할 수 없음
+readonly_combobox.current(0)
+readonly_combobox.pack()
+
+def btncmd():
+    print(combobox.get()) # 선택된 값 표시
+    print(readonly_combobox.get())
+    
+btn = Button(root, text="선택", command=btncmd)
+btn.pack()
+
+root.mainloop()
